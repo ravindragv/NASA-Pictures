@@ -1,4 +1,4 @@
-package io.github.ravindragv.nasapictures
+package io.github.ravindragv.nasapictures.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

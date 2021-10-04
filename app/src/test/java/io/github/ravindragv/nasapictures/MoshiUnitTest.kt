@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import io.github.ravindragv.nasapictures.model.ImageMetaData
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assume.assumeNotNull
