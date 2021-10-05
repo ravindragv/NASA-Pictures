@@ -4,6 +4,7 @@ import com.squareup.moshi.JsonDataException
 import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReader
 import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReaderFactory
 import io.github.ravindragv.nasapictures.interfaces.JSONReader
+import io.github.ravindragv.nasapictures.utilities.MoshiJSONReader
 import org.junit.Assert
 import org.junit.Assume
 import org.junit.Before
@@ -13,17 +14,23 @@ import java.util.*
 
 class MoshiJSONReaderUnitTests {
     private lateinit var moshiJSONReader: ImageMetaDataJSONReader
+    private lateinit var jsonInput: String
 
     @Before
     fun init() {
-        val inpStream = Scanner(javaClass.getResourceAsStream("/data.json"),
+        jsonInput = Scanner(javaClass.getResourceAsStream("/data.json"),
             "UTF-8")
             .useDelimiter("\\A").next()
-        Assume.assumeNotNull(inpStream)
+        Assume.assumeNotNull(jsonInput)
 
         moshiJSONReader = ImageMetaDataJSONReaderFactory.getReader(JSONReader.MOSHI,
-            inpStream.toString())
+            jsonInput)
         Assume.assumeNotNull(moshiJSONReader)
+    }
+
+    @Test
+    fun `Check if ImageMetaDataJSONReaderFactory returns correct object`() {
+        Assert.assertTrue(moshiJSONReader is MoshiJSONReader)
     }
 
     @Test
