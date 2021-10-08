@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import io.github.ravindragv.nasapictures.R
 import io.github.ravindragv.nasapictures.adapters.ImageGridAdapter
 import io.github.ravindragv.nasapictures.databinding.FragmentImageGridBinding
 import io.github.ravindragv.nasapictures.model.ImageMetaData
@@ -30,6 +31,12 @@ class ImageGridFragment: Fragment() {
         adapter.setOnClickListener(object: ImageGridAdapter.OnClickListener{
             override fun onClick(imagePosition: Int) {
                 model.currentPosition = imagePosition
+
+                requireActivity().supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, ImageDetailFragment())
+                    .addToBackStack(null)
+                    .commit()
             }
         })
 

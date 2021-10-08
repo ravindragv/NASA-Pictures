@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NASA Pictures</string>
     <string name="show_thumbnail_of_each_in_the_list">Show thumbnail of each in the list</string>
+    <string name="detailed_image_view">Detailed image view</string>
 </resources>
