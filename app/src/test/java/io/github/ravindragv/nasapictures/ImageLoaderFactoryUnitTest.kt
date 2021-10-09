@@ -1,8 +1,8 @@
 package io.github.ravindragv.nasapictures
 
 import io.github.ravindragv.nasapictures.interfaces.ImageLoader
-import io.github.ravindragv.nasapictures.interfaces.ImageLoaderFactory
-import io.github.ravindragv.nasapictures.interfaces.ImageLoaders
+import io.github.ravindragv.nasapictures.factory.ImageLoaderFactory
+import io.github.ravindragv.nasapictures.factory.ImageLoaders
 import io.github.ravindragv.nasapictures.utilities.GlideImageLoader
 import org.junit.Assert
 import org.junit.Before

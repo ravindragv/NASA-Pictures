@@ -1,5 +1,6 @@
-package io.github.ravindragv.nasapictures.interfaces
+package io.github.ravindragv.nasapictures.factory
 
+import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReader
 import io.github.ravindragv.nasapictures.utilities.MoshiJSONReader
 
 enum class JSONReader {

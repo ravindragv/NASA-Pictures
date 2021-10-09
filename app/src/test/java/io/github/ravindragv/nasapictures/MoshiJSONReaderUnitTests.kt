@@ -2,8 +2,8 @@ package io.github.ravindragv.nasapictures
 
 import com.squareup.moshi.JsonDataException
 import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReader
-import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReaderFactory
-import io.github.ravindragv.nasapictures.interfaces.JSONReader
+import io.github.ravindragv.nasapictures.factory.ImageMetaDataJSONReaderFactory
+import io.github.ravindragv.nasapictures.factory.JSONReader
 import io.github.ravindragv.nasapictures.utilities.MoshiJSONReader
 import org.junit.Assert
 import org.junit.Assume
@@ -23,7 +23,8 @@ class MoshiJSONReaderUnitTests {
             .useDelimiter("\\A").next()
         Assume.assumeNotNull(jsonInput)
 
-        moshiJSONReader = ImageMetaDataJSONReaderFactory.getReader(JSONReader.MOSHI,
+        moshiJSONReader = ImageMetaDataJSONReaderFactory.getReader(
+            JSONReader.MOSHI,
             jsonInput)
         Assume.assumeNotNull(moshiJSONReader)
     }

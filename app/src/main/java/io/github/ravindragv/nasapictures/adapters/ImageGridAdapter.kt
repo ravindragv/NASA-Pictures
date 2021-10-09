@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ravindragv.nasapictures.databinding.ThumbnailViewBinding
-import io.github.ravindragv.nasapictures.interfaces.ImageLoaderFactory
-import io.github.ravindragv.nasapictures.interfaces.ImageLoaders
+import io.github.ravindragv.nasapictures.factory.ImageLoaderFactory
+import io.github.ravindragv.nasapictures.factory.ImageLoaders
 import io.github.ravindragv.nasapictures.model.ImageMetaData
 
 class ImageGridAdapter(private val context: Context,

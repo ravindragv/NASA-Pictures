@@ -1,5 +1,6 @@
-package io.github.ravindragv.nasapictures.interfaces
+package io.github.ravindragv.nasapictures.factory
 
+import io.github.ravindragv.nasapictures.interfaces.ImageLoader
 import io.github.ravindragv.nasapictures.utilities.GlideImageLoader
 
 enum class ImageLoaders {

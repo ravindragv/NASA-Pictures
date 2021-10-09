@@ -3,8 +3,8 @@ package io.github.ravindragv.nasapictures.model
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import io.github.ravindragv.nasapictures.R
-import io.github.ravindragv.nasapictures.interfaces.ImageMetaDataJSONReaderFactory
-import io.github.ravindragv.nasapictures.interfaces.JSONReader
+import io.github.ravindragv.nasapictures.factory.ImageMetaDataJSONReaderFactory
+import io.github.ravindragv.nasapictures.factory.JSONReader
 
 class ImageMetaDataViewModel(application: Application): AndroidViewModel(
     application
