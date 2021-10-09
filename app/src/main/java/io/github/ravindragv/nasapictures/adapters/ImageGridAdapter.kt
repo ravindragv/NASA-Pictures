@@ -27,7 +27,10 @@ class ImageGridAdapter(private val context: Context,
             Log.e("Scratch", "Trying to load "+ imageMetaDataList[position].url)
             Log.e("Scratch", "Date is "+ imageMetaDataList[position].date)
 
-            imageLoader.loadImage(context, holder.binding.ivThumbnail, imageMetaDataList[position].url)
+            imageLoader.loadImage(context,
+                holder.binding.ivThumbnail,
+                imageMetaDataList[position].url,
+                true)
 
             holder.binding.ivThumbnail.setOnClickListener {
                 onClickListener.onClick(position)

@@ -19,8 +19,9 @@ interface ImageLoader {
      *  @param context - Application context in which the ImageLoader will work
      *  @param view - Image view into which the image needs to be loaded into
      *  @param fileURL - URL of the image that needs to be loaded into the image view
+     *  @param cropToCenter - Should the ImageLoader perform cropping to the center
      */
-    fun loadImage(context: Context, view: ImageView, fileURL: String)
+    fun loadImage(context: Context, view: ImageView, fileURL: String, cropToCenter: Boolean = false)
 
     /**
      * Clears an image from the image view

@@ -40,7 +40,8 @@ class ImageDetailAdapter(private val context: Context,
             holder.binding.tvCopyright.visibility = View.GONE
         }
 
-        holder.binding.tvDate.text = SimpleDateFormat("yyyy-MM-dd").format(imageMetaDataList[position].date)
+        holder.binding.tvDate.text = SimpleDateFormat("yyyy-MM-dd")
+            .format(imageMetaDataList[position].date)
         holder.binding.tvTitle.text = imageMetaDataList[position].title
         holder.binding.tvExplanation.text = imageMetaDataList[position].explanation
     }
