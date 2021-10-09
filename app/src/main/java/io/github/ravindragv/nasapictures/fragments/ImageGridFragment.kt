@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import io.github.ravindragv.nasapictures.R
 import io.github.ravindragv.nasapictures.adapters.ImageGridAdapter
@@ -13,7 +12,9 @@ import io.github.ravindragv.nasapictures.databinding.FragmentImageGridBinding
 import io.github.ravindragv.nasapictures.model.ImageMetaData
 import io.github.ravindragv.nasapictures.model.ImageMetaDataViewModel
 
-class ImageGridFragment: Fragment() {
+class ImageGridFragment
+    constructor(private val model: ImageMetaDataViewModel)
+    : Fragment() {
     private var binding: FragmentImageGridBinding? = null
     private lateinit var imageMetaDataList: List<ImageMetaData>
 
@@ -22,7 +23,6 @@ class ImageGridFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val model: ImageMetaDataViewModel by activityViewModels()
         imageMetaDataList = model.getList()
 
         binding = FragmentImageGridBinding.inflate(inflater, container, false)
@@ -34,7 +34,7 @@ class ImageGridFragment: Fragment() {
 
                 requireActivity().supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.fragment_container, ImageDetailFragment())
+                    .replace(R.id.fragment_container, ImageDetailFragment(model))
                     .addToBackStack(null)
                     .commit()
             }

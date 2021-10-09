@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import io.github.ravindragv.nasapictures.adapters.ImageDetailAdapter
 import io.github.ravindragv.nasapictures.databinding.FragmentImageDetailBinding
 import io.github.ravindragv.nasapictures.model.ImageMetaData
 import io.github.ravindragv.nasapictures.model.ImageMetaDataViewModel
 
-class ImageDetailFragment: Fragment() {
+class ImageDetailFragment(private val model: ImageMetaDataViewModel): Fragment() {
     private var binding: FragmentImageDetailBinding? = null
     private lateinit var imageMetaDataList: List<ImageMetaData>
 
@@ -20,7 +19,6 @@ class ImageDetailFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val model: ImageMetaDataViewModel by activityViewModels()
         imageMetaDataList = model.getList()
 
         binding = FragmentImageDetailBinding.inflate(inflater, container, false)
