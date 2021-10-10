@@ -56,6 +56,7 @@ class NetworkMonitor: ConnectivityManager.NetworkCallback() {
 
     fun unRegisterNetworkObserver() {
         connectivityManager.unregisterNetworkCallback(this)
+        observer = null
     }
 
     override fun onAvailable(network: Network) {
