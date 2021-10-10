@@ -15,18 +15,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var model: ImageMetaDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        model = ViewModelProvider(this).get(ImageMetaDataViewModel::class.java)
+        supportFragmentManager.fragmentFactory = ImageFragmentFactory(model)
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        model = ViewModelProvider(this).get(ImageMetaDataViewModel::class.java)
         setupFragment()
     }
 
     private fun setupFragment() {
-        supportFragmentManager.fragmentFactory = ImageFragmentFactory(model)
         supportFragmentManager.commit {
             add(R.id.fragment_container, ImageGridFragment::class.java, null)
         }
