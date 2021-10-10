@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupFragment() {
         supportFragmentManager.commit {
-            add(R.id.fragment_container, ImageGridFragment::class.java, null)
+            replace(R.id.fragment_container, ImageGridFragment::class.java, null)
         }
     }
 }

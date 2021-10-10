@@ -41,7 +41,7 @@ class ImageGridFragment
                 requireActivity().supportFragmentManager.commit {
                     setReorderingAllowed(true)
                     addSharedElement(view,"full_image")
-                    replace(R.id.fragment_container, ImageDetailFragment(model))
+                    replace(R.id.fragment_container, ImageDetailFragment::class.java, null)
                     addToBackStack(null)
                 }
             }
