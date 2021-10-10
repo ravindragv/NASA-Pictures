@@ -30,4 +30,19 @@ interface ImageLoader {
      * @param view - Image view into which the image needs to be loaded into
      */
     fun clearImage(context: Context, view: ImageView)
+
+    /**
+     * Add an observer object
+     *
+     * @param observer - An object of ImageLoaderObserver, the user of this interface is interested
+     * in knowing when an image has been loaded successfully or if it failed.
+     */
+    fun addObserver(observer: ImageLoaderObserver)
+
+    /**
+     * Remove an observer object
+     *
+     * The user of this interface is not interested in listening for events related to image loading
+     */
+    fun removeObserver()
 }

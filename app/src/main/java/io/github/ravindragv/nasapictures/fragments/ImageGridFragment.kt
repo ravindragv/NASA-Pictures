@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.GridLayoutManager
 import io.github.ravindragv.nasapictures.R
 import io.github.ravindragv.nasapictures.adapters.ImageGridAdapter
@@ -33,14 +35,15 @@ class ImageGridFragment
         binding!!.rvImageGrid.layoutManager = GridLayoutManager(requireContext(), 2)
         val adapter = ImageGridAdapter(requireContext(), imageMetaDataList)
         adapter.setOnClickListener(object: ImageGridAdapter.OnClickListener{
-            override fun onClick(imagePosition: Int) {
+            override fun onClick(view: ImageView, imagePosition: Int) {
                 model.currentPosition = imagePosition
 
-                requireActivity().supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, ImageDetailFragment(model))
-                    .addToBackStack(null)
-                    .commit()
+                requireActivity().supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    addSharedElement(view,"full_image")
+                    replace(R.id.fragment_container, ImageDetailFragment(model))
+                    addToBackStack(null)
+                }
             }
         })
 

@@ -1,9 +1,10 @@
 package io.github.ravindragv.nasapictures.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ravindragv.nasapictures.databinding.ThumbnailViewBinding
 import io.github.ravindragv.nasapictures.factory.ImageLoaderFactory
@@ -18,22 +19,23 @@ class ImageGridAdapter(private val context: Context,
     private val imageLoader = ImageLoaderFactory.getImageLoader(ImageLoaders.GLIDE)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ImageGridAdapterViewHolder(ThumbnailViewBinding
+        val view = ImageGridAdapterViewHolder(ThumbnailViewBinding
             .inflate(LayoutInflater.from(parent.context), parent, false))
+
+        ViewCompat.setTransitionName(view.binding.ivThumbnail, "thumbnail_image")
+
+        return view
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ImageGridAdapterViewHolder) {
-            Log.e("Scratch", "Trying to load "+ imageMetaDataList[position].url)
-            Log.e("Scratch", "Date is "+ imageMetaDataList[position].date)
-
             imageLoader.loadImage(context,
                 holder.binding.ivThumbnail,
                 imageMetaDataList[position].url,
                 true)
 
             holder.binding.ivThumbnail.setOnClickListener {
-                onClickListener.onClick(position)
+                onClickListener.onClick(holder.binding.ivThumbnail, position)
             }
         }
     }
@@ -53,7 +55,7 @@ class ImageGridAdapter(private val context: Context,
     }
 
     interface OnClickListener{
-        fun onClick(imagePosition: Int)
+        fun onClick(view: ImageView, imagePosition: Int)
     }
 
     inner class ImageGridAdapterViewHolder(val binding: ThumbnailViewBinding)

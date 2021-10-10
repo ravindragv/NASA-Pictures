@@ -5,24 +5,28 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ravindragv.nasapictures.databinding.ImageDetailBinding
-import io.github.ravindragv.nasapictures.factory.ImageLoaderFactory
-import io.github.ravindragv.nasapictures.factory.ImageLoaders
+import io.github.ravindragv.nasapictures.interfaces.ImageLoader
 import io.github.ravindragv.nasapictures.model.ImageMetaData
 import java.text.SimpleDateFormat
 
 class ImageDetailAdapter(private val context: Context,
-                         private val imageMetaDataList: List<ImageMetaData>) :
+                         private val imageMetaDataList: List<ImageMetaData>,
+                         private val imageLoader: ImageLoader) :
     RecyclerView.Adapter<ImageDetailAdapter.ImageDetailViewAdapterViewHolder>() {
-    private val imageLoader = ImageLoaderFactory.getImageLoader(ImageLoaders.GLIDE)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ImageDetailAdapter.ImageDetailViewAdapterViewHolder {
-        return ImageDetailViewAdapterViewHolder(ImageDetailBinding
+        val view = ImageDetailViewAdapterViewHolder(ImageDetailBinding
             .inflate(LayoutInflater.from(parent.context), parent, false))
+
+        ViewCompat.setTransitionName(view.binding.ivFullImage, "full_image")
+
+        return view
     }
 
     /**
