@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_detail_margin_all">3dp</dimen>
+    <dimen name="zero_width">0dp</dimen>
+    <dimen name="zero_height">0dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="thumbnail_margin_all">11dp</dimen>
+</resources>

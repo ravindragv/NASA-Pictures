@@ -7,14 +7,15 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/zero_height"
         android:layout_weight="1"
         android:id="@+id/iv_full_image"
-        android:contentDescription="@string/detailed_image_view"/>
+        android:contentDescription="@string/detailed_image_view"
+        android:layout_margin="@dimen/image_detail_margin_all"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/zero_height"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -23,21 +24,25 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_title"
             tools:text="Title"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/image_detail_margin_all"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/image_detail_margin_all">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero_width"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:id="@+id/tv_copyright"
-                tools:text="Copyright"/>
+                tools:text="Copyright"
+                android:textStyle="italic"/>
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero_width"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
@@ -45,12 +50,13 @@
                 tools:text="Date"/>
         </LinearLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_explanation"
             tools:text="Explanation"
-            android:gravity="center_horizontal"/>
+            android:layout_margin="@dimen/image_detail_margin_all"
+            android:autoSizeTextType="uniform"/>
 
     </LinearLayout>
 </LinearLayout>

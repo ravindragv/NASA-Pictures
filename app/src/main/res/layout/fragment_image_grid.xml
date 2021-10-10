@@ -5,6 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     android:layout_span="2"
+    android:scrollbars="vertical"
     android:id="@+id/rv_image_grid">
-
 </androidx.recyclerview.widget.RecyclerView>

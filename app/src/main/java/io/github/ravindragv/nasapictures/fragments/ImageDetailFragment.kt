@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import io.github.ravindragv.nasapictures.activities.MainActivity
 import io.github.ravindragv.nasapictures.adapters.ImageDetailAdapter
 import io.github.ravindragv.nasapictures.databinding.FragmentImageDetailBinding
 import io.github.ravindragv.nasapictures.model.ImageMetaData
@@ -19,6 +21,11 @@ class ImageDetailFragment(private val model: ImageMetaDataViewModel): Fragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        if(requireActivity() is MainActivity) {
+            val app = activity as AppCompatActivity
+            app.supportActionBar?.hide()
+        }
+
         imageMetaDataList = model.getList()
 
         binding = FragmentImageDetailBinding.inflate(inflater, container, false)
