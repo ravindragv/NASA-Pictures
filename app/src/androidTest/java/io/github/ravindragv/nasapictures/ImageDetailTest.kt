@@ -47,7 +47,7 @@ class ImageDetailTest {
         onView(withId(R.id.tv_title)).check(matches(isCompletelyDisplayed()))
         onView(withId(R.id.tv_copyright)).check(matches(isCompletelyDisplayed()))
         onView(withId(R.id.tv_date)).check(matches(isCompletelyDisplayed()))
-        onView(withId(R.id.tv_explanation)).check(matches(isCompletelyDisplayed()))
+        onView(withId(R.id.tv_explanation)).check(matches(isDisplayed()))
     }
 
     @Test

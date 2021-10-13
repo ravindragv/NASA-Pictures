@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ravindragv.nasapictures.databinding.ImageDetailBinding
 import io.github.ravindragv.nasapictures.interfaces.ImageLoader
@@ -21,12 +20,10 @@ class ImageDetailAdapter(private val context: Context,
         parent: ViewGroup,
         viewType: Int
     ): ImageDetailAdapter.ImageDetailViewAdapterViewHolder {
-        val view = ImageDetailViewAdapterViewHolder(ImageDetailBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false))
-
-        ViewCompat.setTransitionName(view.binding.ivFullImage, "full_image")
-
-        return view
+        return ImageDetailViewAdapterViewHolder(
+            ImageDetailBinding
+                .inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     /**

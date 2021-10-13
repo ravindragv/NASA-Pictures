@@ -39,8 +39,8 @@ class ImageGridFragment
                 model.currentPosition = imagePosition
 
                 requireActivity().supportFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    addSharedElement(view,"full_image")
+                    setCustomAnimations(R.anim.slide_in, R.anim.fade_out,
+                        R.anim.fade_in, R.anim.slide_out)
                     replace(R.id.fragment_container, ImageDetailFragment::class.java, null)
                     addToBackStack(null)
                 }

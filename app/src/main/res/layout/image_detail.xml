@@ -50,13 +50,17 @@
                 tools:text="Date"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_explanation"
-            tools:text="Explanation"
-            android:layout_margin="@dimen/image_detail_margin_all"
-            android:autoSizeTextType="uniform"/>
+            android:layout_margin="7dp"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_explanation"
+                tools:text="Explanation"/>
+        </ScrollView>
 
     </LinearLayout>
 </LinearLayout>

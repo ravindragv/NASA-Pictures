@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ravindragv.nasapictures.databinding.ThumbnailViewBinding
 import io.github.ravindragv.nasapictures.factory.ImageLoaderFactory
@@ -19,12 +18,10 @@ class ImageGridAdapter(private val context: Context,
     private val imageLoader = ImageLoaderFactory.getImageLoader(ImageLoaders.GLIDE)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = ImageGridAdapterViewHolder(ThumbnailViewBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false))
-
-        ViewCompat.setTransitionName(view.binding.ivThumbnail, "thumbnail_image")
-
-        return view
+        return ImageGridAdapterViewHolder(
+            ThumbnailViewBinding
+                .inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
