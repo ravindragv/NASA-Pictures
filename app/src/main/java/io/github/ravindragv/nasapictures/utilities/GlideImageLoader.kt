@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import io.github.ravindragv.nasapictures.interfaces.ImageLoader
@@ -14,6 +15,36 @@ import io.github.ravindragv.nasapictures.interfaces.ImageLoaderObserver
 
 class GlideImageLoader: ImageLoader {
     private var observer: ImageLoaderObserver? = null
+
+    override fun loadImageWithThumbnail(context: Context, view: ImageView,
+                                        hdURL: String, thumbnailURL: String) {
+        Glide.with(context)
+            .load(hdURL)
+            .thumbnail(Glide.with(context).load(thumbnailURL))
+            .listener(object: RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    observer?.loadFailed()
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    observer?.loadCompleted()
+                    return false
+                }
+            })
+            .into(view)
+    }
 
     override fun loadImage(context: Context,
                            view: ImageView,
@@ -28,6 +59,7 @@ class GlideImageLoader: ImageLoader {
             Glide.with(context)
                 .load(fileURL)
                 .centerCrop()
+                .transition(withCrossFade())
                 .placeholder(circularProgressDrawable)
                 .listener(object: RequestListener<Drawable> {
                     override fun onLoadFailed(
@@ -55,6 +87,7 @@ class GlideImageLoader: ImageLoader {
         } else {
             Glide.with(context)
                 .load(fileURL)
+                .transition(withCrossFade())
                 .placeholder(circularProgressDrawable)
                 .listener(object: RequestListener<Drawable> {
                     override fun onLoadFailed(

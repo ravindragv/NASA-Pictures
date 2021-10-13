@@ -45,4 +45,10 @@ interface ImageLoader {
      * The user of this interface is not interested in listening for events related to image loading
      */
     fun removeObserver()
+
+    /**
+     * Show a thumbnail image while the full size image is getting loaded in the background
+     */
+    fun loadImageWithThumbnail(context: Context, view: ImageView,
+                               hdURL: String, thumbnailURL: String)
 }

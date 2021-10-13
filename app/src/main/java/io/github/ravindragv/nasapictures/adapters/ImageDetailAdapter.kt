@@ -32,7 +32,10 @@ class ImageDetailAdapter(private val context: Context,
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: ImageDetailAdapter.ImageDetailViewAdapterViewHolder,
                                   position: Int) {
-        imageLoader.loadImage(context, holder.binding.ivFullImage, imageMetaDataList[position].url)
+        imageLoader.loadImageWithThumbnail(context,
+            holder.binding.ivFullImage,
+            imageMetaDataList[position].hdurl,
+            imageMetaDataList[position].url)
 
         if (imageMetaDataList[position].copyright != null) {
             holder.binding.tvCopyright.visibility = View.VISIBLE
